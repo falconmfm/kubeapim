@@ -1,4 +1,29 @@
+# Alta de usuario en GSuite 
 
+Acceder a gsuite.google.com y logarse con el usuario admin del dominio.
+
+Ir a Usuarios y añadir un nuevo usuario.
+
+manumora@falc0n.es / mmorales.20%%18 / manuelm;2018%
+
+Acceder en una nueva ventana a https://console.google.com , con el usurio creado.
+En el primer intento se cambiará la clave.
+
+Se habilita los servicios.
+
+Registrarse para la prueba gratuita, y cumplimentar el formulario.
+
+Introducir los datos de la tarjeta.
+
+---
+
+Crear un nuevo proyecto ( en el desplegable superior )
+
+Nombrar como nubentos082018 y asociar a la Organización falc0n.es
+
+Ir al administrador de recursos y eliminar el proyecto creado por defecto ( My Project )
+
+----
 
 Se inicializa gcloud con :
 
@@ -124,10 +149,10 @@ Setamos el projecto por defecto:
 gcloud config set project nubentos0618
 ```
 
-Setamos la zona 
+Setamos la zona:
 
 ```
-gcloud config set compute/zone europe-west1-a
+gcloud config set compute/zone europe-west1-b
 ```
 
 Habilitar las API's de Kubernetes Engine
@@ -138,22 +163,55 @@ gcloud services enable container.googleapis.com
 
 Habilitar la cuenta de facturación del proyecto nubento0618
 
+```
+gcloud components install alpha
+```
+
+Listamos las cuentas de facturación 
+
+```
+gcloud alpha billing accounts list
+
+ACCOUNT_ID            NAME                      OPEN  MASTER_ACCOUNT_ID
+01A546-ABC1B4-AD21BE  Mi cuenta de facturación  True
+```
+
+Asociamos el proyecto con la cuenta 
+
+```
+gcloud beta billing projects link nubentos082018 --billing-account=01A546-ABC1B4-AD21BE
+
+billingAccountName: billingAccounts/01A546-ABC1B4-AD21BE
+billingEnabled: true
+name: projects/nubentos082018/billingInfo
+projectId: nubentos082018
+```
+
+
 Habilitar la API's de DNS
+```
+gcloud dns project-info describe nubentos082018
+
+API [dns.googleapis.com] not enabled on project [894840880073]. Would
+you like to enable and retry (this will take a few minutes)? (y/N)?  y
+```
 
 ---
 
 ##Creamos el cluster de Kubernetes con GCLOUD :
 
-Aseguramos que estamos con la cuenta de usuario 
+Aseguramos que estamos con la cuenta de usuario:
+
 ```
-gcloud config set account manuelm@falc0n.es
+export ACCOUNT=manumora@falc0n.es
+gcloud config set account $ACCOUNT
 ```
 
 ```
 gcloud container clusters create nubentos
 ```
 
-Obtenemos las credenciales con 
+Obtenemos las credenciales con el comando:
 
 ```
 gcloud container clusters get-credentials nubentos
@@ -167,7 +225,7 @@ gcloud container clusters get-credentials nubentos
 kubectl create secret generic mysql-dev --from-literal=password=wso2ddbb
 ```
 
-## Lanzamos el despliegue de la instancia de mysql con : 
+## Lanzamos el despliegue de la instancia de mysql con : ##
 
 ```
 kubectl create -f mysql_deployment.yml
@@ -175,7 +233,7 @@ kubectl create -f mysql_deployment.yml
 
 Una vez levantada la bbdd debemos poblarlar con la creación de las bbdd para cada esquema. 
 
-### Conectamos al pod y lanzamos 
+### Conectamos al pod y lanzamos  ###
 ```bash
 mysql -u root -pwso2ddbb
 ```
@@ -183,15 +241,29 @@ mysql -u root -pwso2ddbb
 A continuación vamos creando cada una de las bbdd's
 
 ```sql
+create database regdb; 
+create database apimgtdb ;
+create database userdb; 
+create database statdb;
+create database mbstoredb;
+create database apim_das_event;
+create database apim_das_processed;
+```
 
-create database regdb characterset latin1
-create database apim 
+Si necesitamos borrar las bbdd previamente ( en caso de update )
+
+```sql 
+drop database regdb; 
+drop database apimgtdb ;
+drop database userdb; 
+drop database statdb;
+drop database mbstoredb;
+drop database apim_das_event;
+drop database apim_das_processed;
+```
 
 
-
-
-
-## Desplegamos el API Manager
+## Desplegamos el API Manager ##
 
 ( esta parte podría lanzarse desde la Consola de GCP para ahorrar tiempo )
 
@@ -200,6 +272,7 @@ Configuramos el registro de Google Cloud , esto nos añade una serie de entradas
 ```
 gcloud auth configure-docker
 ```
+
 La salida muestra las entradas a añadir y solicita confirmación:
 
 ```
@@ -222,29 +295,30 @@ Docker configuration file updated.
 
 De este modo la secuencia de despliegue es la siguientes:
 
--> docker build de la imagen con el tag de imagen local
--> docker tag para etiquetar la imagen con la ruta del registro de docker GCP con formato [HOSTNAME]/[PROJECT]/[IMAGE]:[TAG]
--> docker push 
+* docker build de la imagen con el tag de imagen local
+* docker tag para etiquetar la imagen con la ruta del registro de docker GCP con formato [HOSTNAME]/[PROJECT]/[IMAGE]:[TAG]
+* docker push
 
 Teniendo en cuenta que nuestro HOSTNAME es : eu.gcr.io
 
 Con ello la secuencia de creación de la imagen de docker es :
 
-Clonemos nuestro repositorio con los ficheros para crear la imagen de Docker.
+Accedemos al repositorio de la imagen de Docker.
 
 ```bash
-git clone https://github.com/falconmfm/dockerapim.git
 cd dockerapim
 ```
 
-Contruimos la imagen 
+Construimos la imagen
+
 ```
 docker build --tag eu.gcr.io/nubento0618/wso2amnub:1.5.1 .
 ```
 
 Hacemos push de esta imagen
+
 ```
-docker push eu.gcr.io/nubento0618/wso2amnub:2.1.0 
+docker push eu.gcr.io/nubento0618/wso2amnub:2.1.0
 ```
 
 Clonamos el repositorio para el despliegue de recursos de Kubernetes
@@ -252,9 +326,6 @@ Clonamos el repositorio para el despliegue de recursos de Kubernetes
 ```
 git clone https://github.com/falconmfm/nubeapim.git
 ```
-
-
-
 
 
 ---

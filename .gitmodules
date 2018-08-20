@@ -4,3 +4,6 @@
 [submodule "nubeapim"]
 	path = nubeapim
 	url = https://github.com/falconmfm/nubeapim.git
+[submodule "dockerapimdas"]
+	path = dockerapimdas
+	url = https://github.com/falconmfm/dockerapimdas.git
