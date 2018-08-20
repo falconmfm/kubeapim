@@ -1,0 +1,30 @@
+template:
+  metadata:
+    labels:
+      app: esp-echo
+  spec:
+    volumes:
+    - name: nginx-ssl
+      secret:
+        secretName: nginx-ssl
+    containers:
+    - name: esp
+      image: gcr.io/endpoints-release/endpoints-runtime:1
+      args: [
+        "--http_port", "8080",
+        "--ssl_port", "443",
+        "--backend", "127.0.0.1:8081",
+        "--service", "SERVICE_NAME",
+        "--rollout_strategy", "managed",
+      ]
+      ports:
+        - containerPort: 8080
+        - containerPort: 443
+      volumeMounts:
+      - mountPath: /etc/nginx/ssl
+        name: nginx-ssl
+        readOnly: true
+    - name: echo
+      image: gcr.io/endpoints-release/echo:latest
+      ports:
+        - containerPort: 8081

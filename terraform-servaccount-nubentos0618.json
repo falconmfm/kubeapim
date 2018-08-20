@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "nubento0618",
+  "private_key_id": "0e6b3baf89898414ef3f69fa50ec81dc017504b5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCtLQhf7+TWUh0B\naHbrR6OKa1TqFaSST+vjmu1jQ935Wn9kw8XKTuSJTZ+eQhgKdvqIG6M9e7Lnp7YC\nkKVUjxpOARDsFOU6jpV9kcjjKtyrggp7TSGzgeFiHZ0J0Qy1IznrfYCjMpCgnm6q\nk/J7oZySwt96NS+RbxinnynIf7leYutvK2prk9+sWQH5JQLXIpy+bwnR6PsMav8P\nCVsM/YyoARiw688nacFS0venZug6jFyMAH8oXxjyqqoWu4jGY7XlhsXBWylHh/Az\nat2BMLDTs6oA9GuadqYgy9FpCbwJYVlEYACO2GKzqsfOnZD23UTyljO6vFHcUryv\nwdoMBY33AgMBAAECggEAG/4O//71hQVB5gPeURrD3zCJSctUzke38BMPcz+5pkBQ\nHlgc5R5Kh70x43F4lFx2E8Ev6lTP7u0nmROLffchv+EhPKAGC6iXlnQVvk6j299J\n1XN60prYdTUnOLp/bNo0VxHy1K5sPWJOrij7BavydLCmUgk91qrYF+Q860lmC9D6\nZaZFi7zggQs8PNZEo6w5n7xofTv1of/oplcS4m6SkxFA1pRcDItLsjqhIlypU259\nG6yefJLb5eMh402owRAff9y0Ve2T5o3plne9ghUWq2HrEmqppOyG9CBA/SeVJiMg\nzPyT0ewFIpYCk4lOWwloWPo3NksxeTjRQMUbDlHo4QKBgQDeJP+qoOhxgZKZOSVJ\nEPa0Qd1PPAW/a5LMgzlW99nyRavETd+9zc7cYnGiECMgDtiRGTAYhftYbB873ZxI\nMBrYEuvcfr+7W2nM6S3YNUl/vcrD9F5MyQJmVxi6h67aILWHk6oGFH9qwum99Hl5\ns1kghZXkBq4rCUGPZLQxcK+51wKBgQDHkYQnp+i4kDR9UDU9x/BbRmBzDSizW8oz\nrQj7Nq6j/6suSBLIYkKZT8ddkNd0UDJ1ZwDsACHjknIP232eQqAwHpn887tw6msm\nlFWxy8YdZCTwh21pZEHILP3eF8x6dkadSLdorH7Pi3jKgB1BK8RXZ/9T+v8Ednsk\n90lBbs+I4QKBgH8pOLzorQZEgLF7F8/SiRY4WcIAft3La1XsjAcvi6/2l9OgLEKP\nLCnVpGx7xk+Uj/3HKFPxZiaAhgST3+EmwEcN1bv7Ri+urUqh9B8+qZsY/pfbK5vS\nuK/yjXJBNyMf9CnuqjYex61Kc9jLuDmlI5DNRzcnZ82017WIlOl0MvMzAoGAIqjd\nIN4ChvtUgmcJuB8fWVrRqWmhpfTNG0h0BN0sW4Mtwa32xSJ7mpDGeTOMl8DN4qHv\nAQ3M1O88LBDcsj20AGdwKwRRi3zK+zpL38MaN0SLPdLnZ6Rn4FIgDRBpDOO5w9s7\nL0y2AWmhotm5OvZU9TE0oOs4mxfQr0zbRiful0ECgYEAnmxECFrbbe9b4DMw3IJZ\naR8qQGsjNy20zejIooAABTMwUir34YCkfoLw0qSz3wK5bn/SBfSZaq6EY88MmKpp\nDarW1WLMEEWzcLCb5Q4zTT2aGHorF3P9BviPExZQE+YD/OAG9SOL7MfLVYvPFV/A\nZsyX0Y52BX10w65WqmA/vvo=\n-----END PRIVATE KEY-----\n",
+  "client_email": "terraform@nubento0618.iam.gserviceaccount.com",
+  "client_id": "110226385244499314083",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/terraform%40nubento0618.iam.gserviceaccount.com"
+}
