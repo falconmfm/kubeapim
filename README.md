@@ -261,7 +261,11 @@ drop database mbstoredb;
 drop database apim_das_event;
 drop database apim_das_processed;
 ```
+Para poblar algunas bases de datos necesitaremos pasarle el script con la sentencias 
 
+```
+kubectl exec -it $MYSQL_POD  -- sh -c 'exec mysql -u root -pwso2ddbb userdb' < wso2am-2.2.0/dbscripts/mysql.sql
+``
 
 ## Desplegamos el API Manager ##
 
@@ -347,6 +351,38 @@ A continuación actualizamos los componentes
 gcloud components update
 ```
 
+# Administración de mysql
 
+## Referencias
 
+* https://medium.com/@pczarkowski/live-migrate-from-vm-based-mysql-to-kubernetes-based-mysql-48c8dab9ec3e
 
+## Set variables de entorno:
+´´´
+ export MYSQL_POD=$(kubectl get pod --selector=app=mysql -o jsonpath='{.items..metadata.name}')
+´´´
+
+´´´
+export MYSQL_PASS=$(kubectl get secrets mysql-dev -o jsonpath="{.data.password}" | base64 --decode; echo)
+´´´
+
+## Realizar backup completo :
+
+´´´
+kubectl exec -it $MYSQL_POD  -- sh -c 'exec mysqldump --all-databases -uroot -pwso2ddbb' > dump20180721.sql
+´´´
+
+---
+
+   30  kubectl exec -ti $MYSQL_POD -- mysql -p$MYSQL_PASS -e "select now();"
+   31  kubectl exec -it mysql -- sh -c 'exec mysqldump --all-databases -uroot -p"$MYSQL_PASS"' > dump20180721.sql
+   33  kubectl exec -it $MYSQL_POD  -- sh -c 'exec mysqldump --all-databases -uroot -p"$MYSQL_PASS"' > dump20180721.sql
+   34  kubectl exec -it $MYSQL_POD  -- sh -c 'exec echo mysqldump --all-databases -uroot -p"$MYSQL_PASS"'
+   35  kubectl exec -it $MYSQL_POD  -- sh -c 'exec echo mysqldump --all-databases -uroot -pwso2ddbb'
+   36  kubectl exec -it $MYSQL_POD  -- sh -c 'exec mysqldump --all-databases -uroot -pwso2ddbb'
+   37  kubectl exec -it $MYSQL_POD  -- sh -c 'exec mysqldump --all-databases -uroot -pwso2ddbb' > dump20180721.sql
+   78  kubectl exec -it $MYSQL_POD  -- sh -c 'exec mysqldump --all-databases -uroot -pwso2ddbb' < dump20180721.sql
+   79  export MYSQL_POD=$(kubectl get pod --selector=app=mysql -o jsonpath='{.items..metadata.name}')
+   80  export MYSQL_PASS=$(kubectl get secrets mysql-dev -o jsonpath="{.data.password}" | base64 --decode; echo)
+   81  kubectl exec -it $MYSQL_POD  -- sh -c 'exec mysqldump --all-databases -uroot -pwso2ddbb' < dump20180721.sql
+   82  history | grep mysql

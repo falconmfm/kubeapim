@@ -1,0 +1,25 @@
+[req]
+distinguished_name = req_distinguished_name
+req_extensions = v3_req
+[req_distinguished_name]
+countryName = ES
+countryName_default = ES
+stateOrProvinceName = Andalucia
+stateOrProvinceName_default = Seville
+localityName = Seville
+localityName_default = Seville
+organizationalUnitName = Nubentos
+organizationalUnitName_default = Nubentos
+commonName = apimarket.nubentos.com
+commonName_max = 64
+
+[ v3_req ]
+# Extensions to add to a certificate request
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = *.nubentos.com
+DNS.2 = *.nubentos.falc0n.es
+DNS.3 = *.default.svc.cluster.local
