@@ -4,7 +4,7 @@ Acceder a gsuite.google.com y logarse con el usuario admin del dominio.
 
 Ir a Usuarios y añadir un nuevo usuario.
 
-manumora@falc0n.es / mmorales.20%%18 / manuelm;2018%
+manumora@falc0n.es 
 
 Acceder en una nueva ventana a https://console.google.com , con el usurio creado.
 En el primer intento se cambiará la clave.
