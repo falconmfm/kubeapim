@@ -33,6 +33,7 @@ DNS.1 = *.nubentos.com
 DNS.2 = *.nubentos.falc0n.es
 DNS.3 = *.default.svc.cluster.local
 DNS.4 = apim-core.default.svc.cluster.local
+DNS.5 = localhost
 EOF
 
 openssl req -new -newkey rsa:4096 -nodes -keyout ${CERNAME}.key -out ${CERNAME}.csr -sha256 -config openssl.cnf -passout "env:CERPASS"
