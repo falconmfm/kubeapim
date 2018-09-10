@@ -233,6 +233,8 @@ kubectl create -f mysql_deployment.yml
 
 Una vez levantada la bbdd debemos poblarlar con la creación de las bbdd para cada esquema. 
 
+REF: https://docs.wso2.com/display/AM210/Installing+and+Configuring+the+Databases#Eg-MySQL
+
 ### Conectamos al pod y lanzamos  ###
 ```bash
 mysql -u root -pwso2ddbb
