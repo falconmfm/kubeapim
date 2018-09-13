@@ -1,0 +1,17 @@
+button.btn.btn-default {
+    background-color: #3f93d1 !important;
+    border-color: #3f93d1 !important;
+}
+button.btn.btn-default:hover {
+    background-color: #32C5F0 !important;
+    border-color: #32C5F0 !important;
+}
+div.data-container {
+    border-color: #3f93d1;
+    border-style: solid;
+    border-left-width: 4px;
+    border-bottom-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+}
+
