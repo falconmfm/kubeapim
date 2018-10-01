@@ -221,18 +221,19 @@
         <div id="share_div_embed" class="share_dives highlight" style="display:none">
             <div class="well well-sm remove-margin"><a data-clipboard-text="" id="embed-copy" class="pull-right copy-button" title="<%=i18n.localize("Copy")%>"><i class="fw fw-copy"></i></a><code id="embed_iframe" class="html hljs xml"></code></div>
         </div>
-
+<!-- Disabled social
         <div id="share_div_social" class="share_dives">
-            <!-- Facebook -->
+            <!-- Facebook --
             <a class="social_links" id="facebook" href="#" target="_blank" title="facebook"><img src="<%=jagg.getAbsoluteUrl(jagg.getThemeFile("images/facebook.png"))%>" alt="Facebook" /></a>
-            <!-- Twitter -->
+            <!-- Twitter --
             <a class="social_links" id="twitter" href="#" target="_blank" title="twitter"><img src="<%=jagg.getAbsoluteUrl(jagg.getThemeFile("images/twitter.png"))%>" alt="Twitter" /></a>
-            <!-- Google+ -->
+            <!-- Google+ --
             <a class="social_links" id="googleplus" href="#" target="_blank" title="googleplus"><img src="<%=jagg.getAbsoluteUrl(jagg.getThemeFile("images/google.png"))%>" alt="Google" /></a>
-            <!-- Digg -->
+            <!-- Digg --
             <a class="social_links" id="digg" href="#" target="_blank" title="digg"><img src="<%=jagg.getAbsoluteUrl(jagg.getThemeFile("images/diggit.png"))%>" alt="Digg" /></a>
             <div class="clearfix">
         </div>
+-->
     </div>
     </div>
     </div>
